@@ -21,6 +21,7 @@
     "react-redux": "^8.0.5",
     "react-select": "^5.7.0",
     "styled-components": "^5.3.6",
-    "uniqid": "^5.4.0"
+    "uniqid": "^5.4.0",
+    "webpack": "^5.75.0"
   }
 }

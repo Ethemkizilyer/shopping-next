@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-   experimental: {
+  experimental: {
     appDir: true,
   },
   compiler: {
@@ -9,6 +9,9 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  images: {
+    domains: ["firebasestorage.googleapis.com"],
   },
 };
 
