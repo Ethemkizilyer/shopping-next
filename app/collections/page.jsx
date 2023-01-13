@@ -102,9 +102,6 @@ const Products = () => {
 
   return (
     <>
-      <Head>
-        <title>Collections</title>
-      </Head>
       <MainNav>
         <Link href="/">Home</Link> / <span>Collections</span>
       </MainNav>

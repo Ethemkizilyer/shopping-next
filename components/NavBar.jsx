@@ -1,8 +1,7 @@
 "use client"
 import { useState } from "react";
 import styled from "styled-components";
-import { signOut } from "firebase/auth";
-import { useSelector } from "react-redux";
+import { LogoIcon, WishlistIcon, CartIcon, UserIcon } from "../assets/icons";
 import Link from "next/link";
 
 const Div = styled.div`
@@ -163,6 +162,7 @@ const NavBar = () => {
     <Div>
       <h1 className="title">
         <Link href="/">
+          <LogoIcon />
           <p>BAKAR</p>
         </Link>
       </h1>
@@ -170,23 +170,22 @@ const NavBar = () => {
         <ul className="nav-items">
           <li className="nav-item">
             <Link href="/wishlist">
-              
-              ETHEM
+              <WishlistIcon />
+              <span className="badge">2</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link href="/cart">
-              KIZILYER
+              <CartIcon />
+              <span className="badge">2</span>
             </Link>
           </li>
         </ul>
         <div className={`user-nav ${isMenuVisible ? "active" : ""}`}>
           <button onClick={toggleMenuHandler}>
-          
+            <UserIcon/>
           </button>
-          {isMenuVisible && (
-            BAKAR
-          )}
+          {isMenuVisible && BAKAR}
         </div>
       </div>
     </Div>
