@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,15 +7,18 @@ import styled, { keyframes } from "styled-components";
 import { useSelector } from "react-redux";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 
-import getAllStaticPaths from "../../utils/getAllStaticPaths";
-import getItemById from "../../utils/getItemById";
-import Modal from "../../components/Modal";
-import { db } from "../../services/firebase-config";
-import SizePickerForTops from "../../components/SizePickerForTops";
-import SizePickerForBottoms from "../../components/SizePickerForBottoms";
-import SizeChartForTops from "../../components/SizeChartForTops";
-import SizeChartForBottoms from "../../components/SizeChartForBottoms";
-import { getFormattedCurrency } from "../../utils/getFormattedCurrency";
+
+import getAllStaticPaths from "../../../utils/getAllStaticPaths";
+import getItemById from "../../../utils/getItemById";
+import Modal from "../../../components/Modal";
+import { db } from "../../../services/firebase-config";
+import SizePickerForTops from "../../../components/SizePickerForTops";
+import SizePickerForBottoms from "../../../components/SizePickerForBottoms";
+import SizeChartForTops from "../../../components/SizeChartForTops";
+import SizeChartForBottoms from "../../../components/SizeChartForBottoms";
+import { getFormattedCurrency } from "../../../utils/getFormattedCurrency";
+import data from "../../api/data.json"
+
 
 const MainNav = styled.div`
   font-size: 14px;
@@ -289,7 +293,7 @@ const ModalDiv = styled.div`
   }
 `;
 
-const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
+const ItemDetails = ({ id, imageURL, brand, category, name, amount,params }) => {
   const [size, setSize] = useState("");
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [promptSize, setPromptSize] = useState(false);
@@ -298,9 +302,12 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
   const wishlistItems = useSelector((state) => state.wishlist.items);
   const cartItems = useSelector((state) => state.cart.items);
   const router = useRouter();
-
+  console.log(params.id);
   const isWishlisted = !!wishlistItems.find((value) => value.itemId === id);
+  console.log(user)
 
+  const ürün=data.clothes.filter((item)=>item.id==params.id)
+console.log(ürün);
   const cartItem = cartItems.find(
     (item) => item.itemId === id && item.itemSize === size
   );
@@ -317,9 +324,12 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
     setShowSizeChart(false);
   };
 
+
+
   const addToWishlistHandler = () => {
+    console.log(user)
     if (user) {
-      updateDoc(doc(db, user.uid, "wishlist"), {
+      updateDoc(doc(db, "wishlist",user.uid ), {
         items: arrayUnion({
           itemId: id,
           itemSize: size || null,
@@ -331,6 +341,7 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
   };
 
   const addToCartHandler = () => {
+    console.log("Bakar");
     if (user) {
       if (size) {
         setPromptSize(false);
@@ -380,23 +391,23 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
         {" / "}
         <Link href="/collections">Collections</Link>
         {" / "}
-        <span>{` ${brand} ${name}`}</span>
+        <span>{` ${ürün[0].brand} ${ürün[0].name}`}</span>
       </MainNav>
       <Div>
         <div className="card">
           <div className="image">
             <Image
-              src={imageURL}
+              src={ürün[0].imageURL}
               width={330}
               height={412}
               layout="responsive"
             />
           </div>
           <div className="info">
-            <div className="brand">{brand}</div>
-            <div className="name">{name}</div>
+            <div className="brand">{ürün[0].brand}</div>
+            <div className="name">{ürün[0].name}</div>
             <div className="amount">{`TL ${getFormattedCurrency(
-              amount
+              ürün[0].amount
             )}`}</div>
             <div className="size-box">
               <div className="head">
@@ -463,15 +474,15 @@ export const getStaticPaths = () => {
   };
 };
 
-export const getStaticProps = (context) => {
-  const id = context.params.id;
-  const item = getItemById(id);
+// export const getStaticProps = (context) => {
+//   const id = context.params.id;
+//   const item = getItemById(id);
 
-  return {
-    props: {
-      ...item,
-    },
-  };
-};
+//   return {
+//     props: {
+//       ...item,
+//     },
+//   };
+// };
 
 export default ItemDetails;

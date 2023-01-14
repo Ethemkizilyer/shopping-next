@@ -284,7 +284,7 @@ const CartItemCard = ({
             <div className="amount">
               <span>{quantity}</span>
               <CloseIcon />
-              <span>{`Rs. ${getFormattedCurrency(amount)}`}</span>
+              <span>{`TL ${getFormattedCurrency(amount)}`}</span>
             </div>
           </div>
           <button className="delete" onClick={removeItemHandler}>

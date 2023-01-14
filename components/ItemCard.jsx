@@ -42,6 +42,7 @@ const ItemCard = ({ id, imageURL, brand, name, amount, setPriority }) => {
           height={275}
           layout="responsive"
           priority={setPriority}
+          alt="icon"
         />
         <div className="info">
           <div className="brand">{brand}</div>

@@ -179,7 +179,7 @@ const NavBar = () => {
       <h1 className="title">
         <BetterLink href="/">
           <LogoIcon />
-          <p>tiptop</p>
+          <p>Bakar</p>
         </BetterLink>
       </h1>
       <div className="box">

@@ -84,13 +84,13 @@ const Menu = ({ onClose, onSignOut }) => {
           )}
         </div>
         <div className="divider"></div>
-        <Link className="sign" href="/collections">
+        <Link className="item" href="/collections">
           Collections
         </Link>
-        <Link className="sign" href="/wishlist">
+        <Link className="item" href="/wishlist">
           Wishlist
         </Link>
-        <Link className="sign" href="/cart">
+        <Link className="item" href="/cart">
           Cart
         </Link>
 
