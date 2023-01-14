@@ -2,6 +2,7 @@ import data from "../app/api/data.json";
 
 // Shuffle the items
 const shuffle = (array) => {
+    console.log(array.length);
   let currentIndex = array.length,
     randomIndex;
 
