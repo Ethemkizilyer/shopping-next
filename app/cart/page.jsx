@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
-import Head from "next/head";
+
 import styled, { keyframes } from "styled-components";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import uniqid from "uniqid";
@@ -195,9 +195,6 @@ const Cart = () => {
 
   return (
     <>
-      {/* <Head>
-        <title>Cart</title>
-      </Head> */}
       <MainNav>
         <Link href="/">Home</Link> / <span>Cart</span>
       </MainNav>

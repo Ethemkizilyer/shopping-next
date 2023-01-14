@@ -33,12 +33,12 @@ const Div = styled.div`
   }
 `;
 
-const CategoryFilter = () => {
+const CategoryFilter = ({ items }) => {
   return (
     <Div>
       <div className="heading">Category</div>
-      {[1,2,3,4,5]
-        .sort((a, b) => a.localeCompare(b))
+      {items
+        ?.sort((a, b) => a.localeCompare(b))
         .map((value, index) => (
           <div className="item" key={index}>
             <CheckBox of={value} type="category" />

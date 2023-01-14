@@ -1,9 +1,8 @@
 "use client";
 import styled, { createGlobalStyle } from "styled-components";
 import { Provider } from "react-redux";
-import Head from "next/head";
 
-import store from "../store";
+import store from "../store/index";
 import NavBar from "../components/NavBar";
 import ReactReduxFirebaseWrapper from "../components/ReactReduxFirebaseProvider";
 

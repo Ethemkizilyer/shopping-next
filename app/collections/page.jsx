@@ -5,6 +5,15 @@ import Head from "next/head";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
+import BrandFilter from "../../components/BrandFilter";
+import CategoryFilter from "../../components/CategoryFilter";
+import ItemCard from "../../components/ItemCard";
+import SortSelect from "../../components/SortSelect";
+import getItems from "../../utils/getItems";
+import SmallSort from "../../components/SmallSort";
+import SmallFilter from "../../components/SmallFilter";
+import EmptyResults from "../../components/EmptyResults";
+import data from "../api/data.json"
 
 const MainNav = styled.div`
   font-size: 14px;
@@ -93,12 +102,42 @@ const Div = styled.div`
   }
 `;
 
-const Products = () => {
+const Products = ({ clothes, brands, categories }) => {
+    console.log(clothes);
+    console.log("ethem");
   const [width, setWidth] = useState(window.innerWidth);
+  const filteredBrands = useSelector((state) => state.filter.brands);
+  const filteredCategories = useSelector((state) => state.filter.categories);
+  const filteredSort = useSelector((state) => state.filter.sort);
+// console.log(filteredBrands);
+  let filteredClothes;
 
- 
+  filteredClothes =
+    filteredBrands?.length > 0
+      ? data.clothes?.filter((value) => filteredBrands.includes(value.brand))
+      : data.clothes;
 
+  filteredClothes =
+    filteredCategories.length > 0
+      ? filteredClothes.filter((value) =>
+          filteredCategories.includes(value.category)
+        )
+      : filteredClothes;
 
+  if (filteredSort === "price_high_to_low") {
+    filteredClothes = filteredClothes.sort((a, b) => +b.amount - +a.amount);
+  } else if (filteredSort === "price_low_to_high") {
+    filteredClothes = filteredClothes.sort((a, b) => +a.amount - +b.amount);
+  }
+
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   return (
     <>
@@ -109,15 +148,31 @@ const Products = () => {
         {width > 640 && (
           <aside className="aside">
             <div className="title">Filters</div>
-            Deneme
+            <BrandFilter items={brands} />
+            <CategoryFilter items={categories} />
           </aside>
         )}
         <main className="main">
           <div className="top">
             <div className="title">Collections</div>
-          
+            {width > 640 ? (
+              <SortSelect />
+            ) : (
+              <div className="sort-filter">
+                <SmallSort />
+                <SmallFilter brandItems={brands} categoryItems={categories} />
+              </div>
+            )}
           </div>
-          
+          {filteredClothes?.length > 0 ? (
+            <div className="clothes">
+              {filteredClothes?.map((item, index) => (
+                <ItemCard key={item?.id} {...item} setPriority={index < 8} />
+              ))}
+            </div>
+          ) : (
+            <EmptyResults />
+          )}
         </main>
       </Div>
     </>
