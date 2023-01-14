@@ -1,8 +1,12 @@
-"use client"
 import { useState } from "react";
 import styled from "styled-components";
+import { signOut } from "firebase/auth";
+
 import { LogoIcon, WishlistIcon, CartIcon, UserIcon } from "../assets/icons";
-import Link from "next/link";
+import BetterLink from "./BetterLink";
+import Menu from "./Menu";
+import { auth } from "../services/firebase-config";
+import { useSelector } from "react-redux";
 
 const Div = styled.div`
   display: flex;
@@ -137,9 +141,12 @@ const Div = styled.div`
 
 const NavBar = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-
-
-
+  const wishlistCount = useSelector((state) => state.wishlist.items.length);
+  const cartItems = useSelector((state) => state.cart.items);
+  const cartCount = cartItems.reduce(
+    (prev, cur) => prev + +cur.itemQuantity,
+    0
+  );
 
   const toggleMenuHandler = () => {
     if (isMenuVisible) {
@@ -157,35 +164,48 @@ const NavBar = () => {
     setIsMenuVisible(false);
   };
 
+  const signOutHandler = () => {
+    signOut(auth)
+      .then(() => {
+        closeMenu();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <Div>
       <h1 className="title">
-        <Link href="/">
+        <BetterLink href="/">
           <LogoIcon />
-          <p>BAKAR</p>
-        </Link>
+          <p>tiptop</p>
+        </BetterLink>
       </h1>
       <div className="box">
         <ul className="nav-items">
           <li className="nav-item">
-            <Link href="/wishlist">
+            <BetterLink href="/wishlist">
               <WishlistIcon />
-              <span className="badge">2</span>
-            </Link>
+              {wishlistCount > 0 && (
+                <span className="badge">{wishlistCount}</span>
+              )}
+            </BetterLink>
           </li>
           <li className="nav-item">
-            <Link href="/cart">
+            <BetterLink href="/cart">
               <CartIcon />
-              <span className="badge">2</span>
-            </Link>
+              {cartCount > 0 && <span className="badge">{cartCount}</span>}
+            </BetterLink>
           </li>
         </ul>
         <div className={`user-nav ${isMenuVisible ? "active" : ""}`}>
           <button onClick={toggleMenuHandler}>
-            <UserIcon/>
+            <UserIcon />
           </button>
-          {isMenuVisible && BAKAR}
+          {isMenuVisible && (
+            <Menu onClose={closeMenu} onSignOut={signOutHandler} />
+          )}
         </div>
       </div>
     </Div>

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { FilterIcon } from "../assets/icons";
 
+import { FilterIcon } from "../assets/icons";
+import BrandFilter from "./BrandFilter";
+import CategoryFilter from "./CategoryFilter";
 import Modal from "./Modal";
 
 const Button = styled.button`
@@ -32,7 +34,7 @@ const ModalDiv = styled.div`
   }
 `;
 
-const SmallFilter = () => {
+const SmallFilter = ({ brandItems, categoryItems }) => {
   const [showFilter, setShowFilter] = useState(false);
 
   const openFilterHandler = () => {
@@ -53,7 +55,8 @@ const SmallFilter = () => {
           <ModalDiv>
             <div className="title">Filter</div>
             <div className="filters">
-           
+              <BrandFilter items={brandItems} />
+              <CategoryFilter items={categoryItems} />
             </div>
           </ModalDiv>
         </Modal>
