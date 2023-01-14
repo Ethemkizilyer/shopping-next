@@ -148,8 +148,10 @@ const Products = ({ clothes, brands, categories }) => {
         {width > 640 && (
           <aside className="aside">
             <div className="title">Filters</div>
-            <BrandFilter items={brands} />
-            <CategoryFilter items={categories} />
+            {/* <BrandFilter items={brands} /> */}
+            <BrandFilter items={["American Eagle","Hollister","Pull & Bear","Zara"]} />
+            {/* <CategoryFilter items={categories} /> */}
+            <CategoryFilter items={["Hoodies","Jeans","Polos","Shirts"]} />
           </aside>
         )}
         <main className="main">
