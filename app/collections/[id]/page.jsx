@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import styled, { keyframes } from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 
 
@@ -18,6 +18,7 @@ import SizeChartForTops from "../../../components/SizeChartForTops";
 import SizeChartForBottoms from "../../../components/SizeChartForBottoms";
 import { getFormattedCurrency } from "../../../utils/getFormattedCurrency";
 import data from "../../api/data.json"
+import { cartActions } from "../../../store/cartSlice";
 
 
 const MainNav = styled.div`
@@ -302,20 +303,22 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount,params }) => 
   const wishlistItems = useSelector((state) => state.wishlist.items);
   const cartItems = useSelector((state) => state.cart.items);
   const router = useRouter();
+  const dispatch= useDispatch()
   console.log(params.id);
   const isWishlisted = !!wishlistItems.find((value) => value.itemId === id);
   console.log(user)
+  console.log("data:", data.clothes);
 
   const ürün=data.clothes.filter((item)=>item.id==params.id)
 console.log(ürün);
-  const cartItem = cartItems.find(
-    (item) => item.itemId === id && item.itemSize === size
+  const cartItem = data.clothes.find(
+    (item) => item.id === params.id && false !== size
   );
-  const cartItemIndex = cartItems.findIndex(
-    (item) => item.itemId === id && item.itemSize === size
+  const cartItemIndex = data.clothes.findIndex(
+    (item) => item.id === params.id && false !== size
   );
   const isInCart = !!cartItem;
-
+  console.log("cartitem:", cartItem);
   const openSizeChartHandler = () => {
     setShowSizeChart(true);
   };
@@ -329,9 +332,9 @@ console.log(ürün);
   const addToWishlistHandler = () => {
     console.log(user)
     if (user) {
-      updateDoc(doc(db, "wishlist",user.uid ), {
+      updateDoc(doc(db,user.uid , "wishlist"), {
         items: arrayUnion({
-          itemId: id,
+          itemId: params.id,
           itemSize: size || null,
         }),
       }).catch((error) => console.log(error));
@@ -342,8 +345,10 @@ console.log(ürün);
 
   const addToCartHandler = () => {
     console.log("Bakar");
+    console.log(size)
     if (user) {
       if (size) {
+        dispatch(cartActions.setItems(ürün));
         setPromptSize(false);
         setIsLoading(true);
         if (isInCart) {
@@ -474,15 +479,15 @@ export const getStaticPaths = () => {
   };
 };
 
-// export const getStaticProps = (context) => {
-//   const id = context.params.id;
-//   const item = getItemById(id);
+export const getStaticProps = (context) => {
+  const id = context.params.id;
+  const item = getItemById(id);
 
-//   return {
-//     props: {
-//       ...item,
-//     },
-//   };
-// };
+  return {
+    props: {
+      ...item,
+    },
+  };
+};
 
 export default ItemDetails;

@@ -30,16 +30,16 @@ const ReactReduxFirebaseWrapper = ({ children }) => {
 
           const wishlistSub = onSnapshot(
             doc(db, user.uid, 'wishlist'),
-            (document) => {
+            (doc) => {
               try {
-                const items = document.data().items;
+                const items = doc.data().items;
                 dispatch(wishlistActions.setItems(items));
 
                 const cartSub = onSnapshot(
                   doc(db, user.uid, 'cart'),
-                  (document) => {
+                  (doc) => {
                     try {
-                      const items = document.data().items;
+                      const items = doc.data().items;
                       dispatch(cartActions.setItems(items));
                       setIsLoading(false);
                     } catch (error) {
@@ -50,7 +50,7 @@ const ReactReduxFirebaseWrapper = ({ children }) => {
                     setIsLoading(false);
                   }
                 );
-
+console.log("cartSub:",cartSub);
                 subscriptions.push(cartSub);
               } catch (error) {
                 setIsLoading(false);

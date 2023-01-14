@@ -1,7 +1,8 @@
 "use client"
 import Link from "next/link";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-
+import { cartActions } from "../store/cartSlice";
 const Div = styled.div`
   flex: 1;
   display: flex;
@@ -42,8 +43,8 @@ const Div = styled.div`
 `;
 
 const page = () => {
-  
-
+const user = useSelector((state) => state.auth.user);
+console.log(user);
   return (
     <Div>
       <p className="title">Wear better, look better.</p>

@@ -152,7 +152,7 @@ const Cart = () => {
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
   const user = useSelector((state) => state.auth.user);
   const cartItems = useSelector((state) => state.cart.items);
-
+console.log(cartItems);
   useEffect(() => {
     const items = cartItems.map((item) => {
       const itemDetails = getItemById(item.itemId);
@@ -211,7 +211,7 @@ const Cart = () => {
                 </div>
                 <div className="clothes">
                   {clothes.map((item, index) => (
-                    <CartItemCard key={uniqid()} index={index} {...item} />
+                    <CartItemCard key={uniqid()} index={index} {...item} cartItems={cartItems}/>
                   ))}
                 </div>
               </div>
@@ -220,11 +220,11 @@ const Cart = () => {
                 <div className="basic">
                   <div className="price">
                     <div className="title">Price</div>
-                    <div className="amount">Rs. {priceValue}</div>
+                    <div className="amount">TL {priceValue}</div>
                   </div>
                   <div className="discount">
                     <div className="title">Discount</div>
-                    <div className="amount">- Rs. {discountValue}</div>
+                    <div className="amount">- TL {discountValue}</div>
                   </div>
                   <div className="shipping">
                     <div className="title">Shipping</div>
@@ -234,7 +234,7 @@ const Cart = () => {
                 <div className="total">
                   <div className="final">
                     <div className="title">Total Amount</div>
-                    <div className="amount">Rs. {totalValue}</div>
+                    <div className="amount">TL {totalValue}</div>
                   </div>
                   <button
                     className="order"

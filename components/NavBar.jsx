@@ -147,7 +147,8 @@ const NavBar = () => {
     (prev, cur) => prev + +cur.itemQuantity,
     0
   );
-
+// console.log(wishlistCount);
+console.log("cartıtems:",cartItems);
   const toggleMenuHandler = () => {
     if (isMenuVisible) {
       closeMenu();

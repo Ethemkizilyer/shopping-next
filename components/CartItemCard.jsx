@@ -194,6 +194,7 @@ const CartItemCard = ({
   name,
   amount,
   quantity,
+  // cartItems,
 }) => {
   const [showQuantityPicker, setShowQuantityPicker] = useState(false);
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
@@ -265,15 +266,15 @@ const CartItemCard = ({
         <div className="item">
           <BetterLink href={`/collections/${id}`}>
             <Image
-              src={imageURL}
+              src={cartItems[0].imageURL}
               width={110}
               height={138}
               layout="responsive"
             />
           </BetterLink>
           <div className="info">
-            <div className="brand">{brand}</div>
-            <div className="name">{name}</div>
+            <div className="brand">{cartItems[0].brand}</div>
+            <div className="name">{cartItems[0].name}</div>
             <div className="actions">
               <button>Size: {size}</button>
               <button className="quantity" onClick={openQuantityPickerHandler}>
@@ -284,7 +285,7 @@ const CartItemCard = ({
             <div className="amount">
               <span>{quantity}</span>
               <CloseIcon />
-              <span>{`TL ${getFormattedCurrency(amount)}`}</span>
+              <span>{`TL ${getFormattedCurrency(cartItems[0].amount)}`}</span>
             </div>
           </div>
           <button className="delete" onClick={removeItemHandler}>
