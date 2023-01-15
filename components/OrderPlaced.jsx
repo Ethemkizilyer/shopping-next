@@ -66,7 +66,7 @@ const OrderPlaced = () => {
       </div>
       <h2 className="title">Order placed successfully</h2>
       <p className="text">Thank you for shopping with us</p>
-      <Link href="/collections">Continue Shopping</Link>
+      <Link href="collections">Continue Shopping</Link>
     </Div>
   );
 };

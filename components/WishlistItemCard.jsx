@@ -282,7 +282,7 @@ const WishlistItemCard = ({
           <button className="delete" onClick={deleteItemHandler}>
             <CloseIcon />
           </button>
-          <BetterLink href={`/collections/${id}`}>
+          <BetterLink href={`collections/${id}`}>
             <Image
               src={imageURL}
               width={220}

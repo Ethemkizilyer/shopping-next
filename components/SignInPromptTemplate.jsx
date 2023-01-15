@@ -65,7 +65,7 @@ const SignInPromptTemplate = ({ type }) => {
       </div>
       <h2 className="title">Please Sign In</h2>
       <p className="text">Sign In to view items in your {type}</p>
-      <Link href="/signin">Sign In</Link>
+      <Link href="signin">Sign In</Link>
     </Div>
   );
 };

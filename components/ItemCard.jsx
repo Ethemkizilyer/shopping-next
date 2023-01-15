@@ -34,7 +34,7 @@ const Div = styled.div`
 const ItemCard = ({ id, imageURL, brand, name, amount, setPriority }) => {
   return (
     <Div>
-      <BetterLink href={`/collections/${id}`}>
+      <BetterLink href={`collections/${id}`}>
         <Image
           src={imageURL}
           width={220}
