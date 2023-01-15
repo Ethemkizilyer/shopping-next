@@ -1,4 +1,4 @@
-
+Live: https://resilient-kulfi-04f1cf.netlify.app/
 
 https://user-images.githubusercontent.com/106928233/212523758-edf4b62b-3107-4fc1-bbcb-98950e186982.mp4
 
@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-https://resilient-kulfi-04f1cf.netlify.app/
+
 
 First, run the development server:
 
