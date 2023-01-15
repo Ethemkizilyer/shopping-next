@@ -1,12 +1,12 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { signOut } from "firebase/auth";
+import { useState } from 'react';
+import styled from 'styled-components';
+import { signOut } from 'firebase/auth';
 
-import { LogoIcon, WishlistIcon, CartIcon, UserIcon } from "../assets/icons";
-import BetterLink from "./BetterLink";
-import Menu from "./Menu";
-import { auth } from "../services/firebase-config";
-import { useSelector } from "react-redux";
+import { LogoIcon, WishlistIcon, CartIcon, UserIcon } from '../assets/icons';
+import BetterLink from './BetterLink';
+import Menu from './Menu';
+import { auth } from '../services/firebase-config';
+import { useSelector } from 'react-redux';
 
 const Div = styled.div`
   display: flex;
@@ -143,12 +143,11 @@ const NavBar = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const wishlistCount = useSelector((state) => state.wishlist.items.length);
   const cartItems = useSelector((state) => state.cart.items);
-  const cartCount = cartItems.reduce(
+  const cartCount = cartItems?.reduce(
     (prev, cur) => prev + +cur.itemQuantity,
     0
   );
-// console.log(wishlistCount);
-console.log("cartıtems:",cartItems);
+console.log(wishlistCount);
   const toggleMenuHandler = () => {
     if (isMenuVisible) {
       closeMenu();
@@ -180,7 +179,7 @@ console.log("cartıtems:",cartItems);
       <h1 className="title">
         <BetterLink href="/">
           <LogoIcon />
-          <p>Bakar</p>
+          <p>tiptop</p>
         </BetterLink>
       </h1>
       <div className="box">
@@ -200,7 +199,7 @@ console.log("cartıtems:",cartItems);
             </BetterLink>
           </li>
         </ul>
-        <div className={`user-nav ${isMenuVisible ? "active" : ""}`}>
+        <div className={`user-nav ${isMenuVisible ? 'active' : ''}`}>
           <button onClick={toggleMenuHandler}>
             <UserIcon />
           </button>

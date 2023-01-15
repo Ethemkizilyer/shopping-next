@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { CloseIcon } from "../assets/icons";
+import styled from 'styled-components';
 
+import { CloseIcon } from '../assets/icons';
 
 const Div = styled.div`
   position: fixed;

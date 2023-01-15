@@ -32,7 +32,6 @@ const Div = styled.div`
 `;
 
 const ItemCard = ({ id, imageURL, brand, name, amount, setPriority }) => {
-  
   return (
     <Div>
       <BetterLink href={`/collections/${id}`}>
@@ -42,13 +41,11 @@ const ItemCard = ({ id, imageURL, brand, name, amount, setPriority }) => {
           height={275}
           layout="responsive"
           priority={setPriority}
-          alt="icon"
         />
         <div className="info">
           <div className="brand">{brand}</div>
           <div className="name">{name}</div>
-          {/* <div className="amount">{`TL ${getFormattedCurrency(amount)}`}</div> */}
-          <div className="amount">{`TL ${Number(amount)}`}</div>
+          <div className="amount">{`Rs. ${getFormattedCurrency(amount)}`}</div>
         </div>
       </BetterLink>
     </Div>

@@ -1,4 +1,4 @@
-import data from "../app/api/data.json";
+import data from "../pages/api/data.json";
 
 // Shuffle the items
 const shuffle = (array) => {

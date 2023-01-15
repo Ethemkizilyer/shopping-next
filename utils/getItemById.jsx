@@ -1,4 +1,4 @@
-import data from '../app/api/data.json';
+import data from "../pages/api/data.json";
 
 const getItemById = (itemId) => {
   console.log(data.clothes)

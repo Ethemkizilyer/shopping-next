@@ -1,10 +1,10 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 
-import { FilterIcon } from "../assets/icons";
-import BrandFilter from "./BrandFilter";
-import CategoryFilter from "./CategoryFilter";
-import Modal from "./Modal";
+import { FilterIcon } from '../assets/icons';
+import BrandFilter from './BrandFilter';
+import CategoryFilter from './CategoryFilter';
+import Modal from './Modal';
 
 const Button = styled.button`
   color: inherit;

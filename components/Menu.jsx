@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import OutsideClickHandler from 'react-outside-click-handler';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Div = styled.div`
   border: 1px #eee solid;
@@ -54,15 +54,28 @@ const Div = styled.div`
 `;
 
 const Menu = ({ onClose, onSignOut }) => {
-
+  const router = useRouter();
   const user = useSelector((state) => state.auth.user);
 
+  const signInHandler = () => {
+    router.push('/signin');
+    onClose();
+  };
 
- 
+  const collectionsHandler = () => {
+    router.push('/collections');
+    onClose();
+  };
 
- 
+  const wishlistHandler = () => {
+    router.push('/wishlist');
+    onClose();
+  };
 
- 
+  const cartHandler = () => {
+    router.push('/cart');
+    onClose();
+  };
 
   return (
     <Div>
@@ -77,23 +90,22 @@ const Menu = ({ onClose, onSignOut }) => {
             <>
               <p>Welcome</p>
               <p>To access wishlist or cart</p>
-              <Link className="sign" href="/signin">
+              <div className="sign" onClick={signInHandler}>
                 Sign In
-              </Link>
+              </div>
             </>
           )}
         </div>
         <div className="divider"></div>
-        <Link className="item" href="/collections">
+        <div className="item" onClick={collectionsHandler}>
           Collections
-        </Link>
-        <Link className="item" href="/wishlist">
+        </div>
+        <div className="item" onClick={wishlistHandler}>
           Wishlist
-        </Link>
-        <Link className="item" href="/cart">
+        </div>
+        <div className="item" onClick={cartHandler}>
           Cart
-        </Link>
-
+        </div>
         {user && (
           <div className="item" onClick={onSignOut}>
             Sign Out

@@ -194,8 +194,8 @@ const CartItemCard = ({
   name,
   amount,
   quantity,
-  // cartItems,
 }) => {
+  console.log(id,size,imageURL);
   const [showQuantityPicker, setShowQuantityPicker] = useState(false);
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const user = useSelector((state) => state.auth.user);
@@ -259,22 +259,22 @@ const CartItemCard = ({
         console.log(error);
       });
   };
-
+console.log(imageURL);
   return (
     <>
       <Div>
         <div className="item">
           <BetterLink href={`/collections/${id}`}>
             <Image
-              src={cartItems[0].imageURL}
+              src={imageURL}
               width={110}
               height={138}
-              layout="responsive"
+              
             />
           </BetterLink>
           <div className="info">
-            <div className="brand">{cartItems[0].brand}</div>
-            <div className="name">{cartItems[0].name}</div>
+            <div className="brand">{brand}</div>
+            <div className="name">{name}</div>
             <div className="actions">
               <button>Size: {size}</button>
               <button className="quantity" onClick={openQuantityPickerHandler}>
@@ -285,7 +285,7 @@ const CartItemCard = ({
             <div className="amount">
               <span>{quantity}</span>
               <CloseIcon />
-              <span>{`TL ${getFormattedCurrency(cartItems[0].amount)}`}</span>
+              <span>{`Rs. ${getFormattedCurrency(amount)}`}</span>
             </div>
           </div>
           <button className="delete" onClick={removeItemHandler}>

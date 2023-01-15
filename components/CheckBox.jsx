@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 
-import { CheckIcon } from "../assets/icons";
-import { filterActions } from "../store/filterSlice";
+import { CheckIcon } from '../assets/icons';
+import { filterActions } from '../store/filterSlice';
 
 const Button = styled.button`
   flex-shrink: 0;
@@ -35,11 +35,11 @@ const CheckBox = ({ of, type }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (type === "brand") {
+    if (type === 'brand') {
       if (filters.brands.includes(of)) {
         setIsChecked(true);
       }
-    } else if (type === "category") {
+    } else if (type === 'category') {
       if (filters.categories.includes(of)) {
         setIsChecked(true);
       }
@@ -48,15 +48,15 @@ const CheckBox = ({ of, type }) => {
 
   const clickHandler = () => {
     if (isChecked) {
-      if (type === "brand") {
+      if (type === 'brand') {
         dispatch(filterActions.deselectBrand(of));
-      } else if (type === "category") {
+      } else if (type === 'category') {
         dispatch(filterActions.deselectCategory(of));
       }
     } else {
-      if (type === "brand") {
+      if (type === 'brand') {
         dispatch(filterActions.selectBrand(of));
-      } else if (type === "category") {
+      } else if (type === 'category') {
         dispatch(filterActions.selectCategory(of));
       }
     }

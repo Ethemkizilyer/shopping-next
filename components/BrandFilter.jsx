@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import CheckBox from "./CheckBox";
+import CheckBox from './CheckBox';
 
 const Div = styled.div`
   margin-top: 32px;
@@ -38,7 +38,7 @@ const BrandFilter = ({ items }) => {
     <Div>
       <div className="heading">Brand</div>
       {items
-        ?.sort((a, b) => a.localeCompare(b))
+        .sort((a, b) => a.localeCompare(b))
         .map((value, index) => (
           <div className="item" key={index}>
             <CheckBox of={value} type="brand" />

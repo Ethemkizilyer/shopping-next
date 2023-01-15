@@ -1,49 +1,48 @@
-import Select from "react-select";
-import { useDispatch } from "react-redux";
+import Select from 'react-select';
+import { useDispatch } from 'react-redux';
 
-import { filterActions } from "../store/filterSlice";
-import ReactSelect from "react-select";
+import { filterActions } from '../store/filterSlice';
 
 const options = [
-  { value: "default", label: "Default" },
-  { value: "price_high_to_low", label: "Price: High to Low" },
-  { value: "price_low_to_high", label: "Price: Low to High" },
+  { value: 'default', label: 'Default' },
+  { value: 'price_high_to_low', label: 'Price: High to Low' },
+  { value: 'price_low_to_high', label: 'Price: Low to High' },
 ];
 
 const customStyles = {
   container: (provided) => ({
     ...provided,
-    fontSize: "14px",
+    fontSize: '14px',
   }),
   control: (provided) => ({
     ...provided,
-    width: "180px",
-    border: "1px #ddd solid",
-    boxShadow: "none",
-    "&:hover": {},
+    width: '180px',
+    border: '1px #ddd solid',
+    boxShadow: 'none',
+    '&:hover': {},
   }),
   indicatorSeparator: (provided) => ({
     ...provided,
-    display: "none",
+    display: 'none',
   }),
   menu: (provided) => ({
     ...provided,
-    border: "1px #ddd solid",
-    boxShadow: "0 0 5px rgba(0, 0, 0, 0.05)",
+    border: '1px #ddd solid',
+    boxShadow: '0 0 5px rgba(0, 0, 0, 0.05)',
   }),
   option: (provided, state) => ({
     ...provided,
-    border: "none",
-    backgroundColor: state.isSelected ? "#4a00e0" : "white",
-    cursor: "pointer",
-    ":active": {
-      ...provided[":active"],
-      backgroundColor: state.isSelected ? "#4a00e0" : "#f4f4f4",
+    border: 'none',
+    backgroundColor: state.isSelected ? '#4a00e0' : 'white',
+    cursor: 'pointer',
+    ':active': {
+      ...provided[':active'],
+      backgroundColor: state.isSelected ? '#4a00e0' : '#f4f4f4',
     },
   }),
   placeholder: (provided) => ({
     ...provided,
-    color: "#bbb",
+    color: '#bbb',
   }),
 };
 
@@ -55,7 +54,7 @@ const SortSelect = () => {
   };
 
   return (
-    <ReactSelect
+    <Select
       blurInputOnSelect
       defaultValue={options[0]}
       instanceId="sort-select"

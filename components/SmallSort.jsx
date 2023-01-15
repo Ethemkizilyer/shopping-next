@@ -1,9 +1,9 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 
-import { SortIcon } from "../assets/icons";
-import Modal from "./Modal";
-import SortBy from "./SortBy";
+import { SortIcon } from '../assets/icons';
+import Modal from './Modal';
+import SortBy from './SortBy';
 
 const Button = styled.button`
   color: inherit;
