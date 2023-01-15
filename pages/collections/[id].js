@@ -326,7 +326,7 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
         }),
       }).catch((error) => console.log(error));
     } else {
-      router.push('signin');
+      router.push('/signin');
     }
   };
 
@@ -369,7 +369,7 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
         setPromptSize(true);
       }
     } else {
-      router.push('signin');
+      router.push('/signin');
     }
   };
 
