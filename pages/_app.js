@@ -37,9 +37,7 @@ const MyApp = ({ Component, pageProps }) => {
   console.log("pageprops:",pageProps)
   return (
     <>
-      <Head>
-        <title>Bakar</title>
-      </Head>
+  
       <GlobalStyle />
       <Container>
         <Provider store={store}>

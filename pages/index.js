@@ -44,9 +44,7 @@ const Div = styled.div`
 const Home = () => {
   return (
     <>
-      <Head>
-        <title>Bakar</title>
-      </Head>
+  
       <Div>
         <p className="title">Wear better, look better.</p>
         <p className="text">Don't you just love being in apparel?</p>

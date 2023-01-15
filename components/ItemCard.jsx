@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { getFormattedCurrency } from '../utils/getFormattedCurrency';
 
@@ -34,7 +35,7 @@ const Div = styled.div`
 const ItemCard = ({ id, imageURL, brand, name, amount, setPriority }) => {
   return (
     <Div>
-      <BetterLink href={`collections/${id}`}>
+      <Link href={`collections/${id}`}>
         <Image
           src={imageURL}
           width={220}
@@ -47,7 +48,7 @@ const ItemCard = ({ id, imageURL, brand, name, amount, setPriority }) => {
           <div className="name">{name}</div>
           <div className="amount">{`₺ ${getFormattedCurrency(amount)}`}</div>
         </div>
-      </BetterLink>
+      </Link>
     </Div>
   );
 };
