@@ -285,7 +285,7 @@ console.log(imageURL);
             <div className="amount">
               <span>{quantity}</span>
               <CloseIcon />
-              <span>{`Rs. ${getFormattedCurrency(amount)}`}</span>
+              <span>{`₺ ${getFormattedCurrency(amount)}`}</span>
             </div>
           </div>
           <button className="delete" onClick={removeItemHandler}>

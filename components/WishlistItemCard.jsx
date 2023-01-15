@@ -293,7 +293,7 @@ const WishlistItemCard = ({
           <div className="info">
             <div className="brand">{brand}</div>
             <div className="name">{name}</div>
-            <div className="amount">{`Rs. ${getFormattedCurrency(
+            <div className="amount">{`₺ ${getFormattedCurrency(
               amount
             )}`}</div>
           </div>
