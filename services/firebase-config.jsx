@@ -3,14 +3,14 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAcL73vOcFkBzHwbNoGwXGh75dbL10O0ho",
-  authDomain: "shopping-de2cb.firebaseapp.com",
-  databaseURL: "https://shopping-de2cb-default-rtdb.firebaseio.com",
-  projectId: "shopping-de2cb",
-  storageBucket: "shopping-de2cb.appspot.com",
-  messagingSenderId: "122907321089",
-  appId: "1:122907321089:web:c8a1af3e46fcfea674f100",
-  measurementId: "G-12GQDV56DV",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABSE_URL,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
