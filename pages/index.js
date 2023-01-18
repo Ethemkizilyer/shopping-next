@@ -44,9 +44,10 @@ const Div = styled.div`
 const Home = () => {
   return (
     <>
-  
       <Div>
-        <p className="title">Wear better, look better.</p>
+        <p data-cy="title" className="title">
+          Wear better, look better.
+        </p>
         <p className="text">Don't you just love being in apparel?</p>
         <Link href="/collections">Shop Now</Link>
       </Div>

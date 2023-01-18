@@ -464,10 +464,10 @@ export const getStaticPaths = () => {
 export const getStaticProps = (context) => {
   const id = context.params.id;
   const item = getItemById(id);
-
+const ert="bakar"
   return {
     props: {
-      ...item,
+      ...item,ert
     },
   };
 };

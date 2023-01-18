@@ -4,7 +4,7 @@ import Head from 'next/head';
 import styled, { keyframes } from 'styled-components';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 import { LogoIcon } from '../assets/icons';
@@ -275,7 +275,7 @@ const SignUp = () => {
   return (
     <>
       <Head>
-        <title>Sign Up</title>
+        <title data-cy="title">Sign Up</title>
       </Head>
       <MainNav>
         <Link href="/">Home</Link> / <span>Sign Up</span>

@@ -196,12 +196,13 @@ export const getStaticProps = (context) => {
 
     return previous;
   }, []);
-
+const rty="bakarlar"
   return {
     props: {
       clothes: items,
       brands,
       categories,
+      rty
     },
   };
 };

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@next/font": "13.1.2",
@@ -24,5 +25,8 @@
     "styled-components": "^5.3.6",
     "uniqid": "^5.4.0",
     "webpack": "^5.75.0"
+  },
+  "devDependencies": {
+    "cypress": "^12.3.0"
   }
 }
