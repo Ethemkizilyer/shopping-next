@@ -265,12 +265,7 @@ console.log(imageURL);
       <Div>
         <div className="item">
           <BetterLink href={`collections/${id}`}>
-            <Image
-              src={imageURL}
-              width={110}
-              height={138}
-              
-            />
+            <Image src={imageURL} width={110} height={138} alt="image" />
           </BetterLink>
           <div className="info">
             <div className="brand">{brand}</div>

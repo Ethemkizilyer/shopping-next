@@ -389,7 +389,7 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
               src={imageURL}
               width={330}
               height={412}
-              layout="responsive"
+alt="image"
             />
           </div>
           <div className="info">
@@ -464,10 +464,10 @@ export const getStaticPaths = () => {
 export const getStaticProps = (context) => {
   const id = context.params.id;
   const item = getItemById(id);
-const ert="bakar"
+
   return {
     props: {
-      ...item,ert
+    item
     },
   };
 };

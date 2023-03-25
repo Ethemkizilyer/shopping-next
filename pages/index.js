@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Head from 'next/head';
-import styled from 'styled-components';
+import Link from "next/link";
+import Head from "next/head";
+import styled from "styled-components";
 
 const Div = styled.div`
   flex: 1;
@@ -44,11 +44,16 @@ const Div = styled.div`
 const Home = () => {
   return (
     <>
+      <Head>
+        <title>Bakar Shop</title>
+        <meta name="description" content="Next.js proje" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Div>
         <p data-cy="title" className="title">
           Wear better, look better.
         </p>
-        <p className="text">Don't you just love being in apparel?</p>
+        <p className="text">Don&#39;t you just love being in apparel?</p>
         <Link href="/collections">Shop Now</Link>
       </Div>
     </>

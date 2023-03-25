@@ -189,8 +189,8 @@ const Wishlist = () => {
             src={imageToBeNotified}
             width={33}
             height={41}
-            layout="fixed"
             priority
+            alt='image'
           />
         )}
         <p>Item added to cart successfully</p>

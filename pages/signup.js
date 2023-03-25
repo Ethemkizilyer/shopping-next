@@ -285,7 +285,7 @@ const SignUp = () => {
           <>
             <p>
               You are signed in as <span className="bold">{user.email}</span>.
-              You'll now be redirected.
+              You&#39;ll now be redirected.
             </p>
           </>
         ) : (
@@ -300,7 +300,7 @@ const SignUp = () => {
               <form className="form" onSubmit={submitHandler}>
                 <div
                   className={`form-control ${
-                    startNameValidation ? (isNameValid ? '' : 'error') : ''
+                    startNameValidation ? (isNameValid ? "" : "error") : ""
                   }`}
                 >
                   <input
@@ -316,7 +316,7 @@ const SignUp = () => {
                 </div>
                 <div
                   className={`form-control ${
-                    startEmailValidation ? (isEmailValid ? '' : 'error') : ''
+                    startEmailValidation ? (isEmailValid ? "" : "error") : ""
                   }`}
                 >
                   <input
@@ -331,20 +331,20 @@ const SignUp = () => {
                   <span className="hint">{`${
                     startEmailValidation
                       ? emailInput.length === 0
-                        ? 'Email cannot be empty'
+                        ? "Email cannot be empty"
                         : !validateEmail(emailInput)
-                        ? 'Email is not valid'
-                        : ''
-                      : ''
+                        ? "Email is not valid"
+                        : ""
+                      : ""
                   }`}</span>
                 </div>
                 <div
                   className={`form-control ${
                     startPasswordValidation
                       ? isPasswordValid
-                        ? ''
-                        : 'error'
-                      : ''
+                        ? ""
+                        : "error"
+                      : ""
                   }`}
                 >
                   <input
@@ -359,15 +359,15 @@ const SignUp = () => {
                   <span className="hint">{`${
                     startPasswordValidation
                       ? passwordInput.length === 0
-                        ? 'Password cannot be empty'
+                        ? "Password cannot be empty"
                         : !validatePassword(passwordInput)
-                        ? 'Min 6 characters required'
-                        : ''
-                      : ''
+                        ? "Min 6 characters required"
+                        : ""
+                      : ""
                   }`}</span>
                 </div>
                 <button type="submit" disabled={isLoading}>
-                  {isLoading ? <span className="loader"></span> : 'Sign Up'}
+                  {isLoading ? <span className="loader"></span> : "Sign Up"}
                 </button>
               </form>
               <p className="info">

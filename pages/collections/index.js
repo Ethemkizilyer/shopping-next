@@ -105,7 +105,7 @@ const Products = ({ clothes, brands, categories }) => {
   const filteredBrands = useSelector((state) => state.filter.brands);
   const filteredCategories = useSelector((state) => state.filter.categories);
   const filteredSort = useSelector((state) => state.filter.sort);
-
+console.log(width)
   let filteredClothes;
 
   filteredClothes =

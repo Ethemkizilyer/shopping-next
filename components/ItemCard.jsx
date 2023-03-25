@@ -38,10 +38,10 @@ const ItemCard = ({ id, imageURL, brand, name, amount, setPriority }) => {
       <Link href={`collections/${id}`}>
         <Image
           src={imageURL}
-          width={220}
+          width={255}
           height={275}
-          layout="responsive"
           priority={setPriority}
+          alt="image"
         />
         <div className="info">
           <div className="brand">{brand}</div>

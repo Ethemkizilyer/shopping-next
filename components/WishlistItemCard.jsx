@@ -287,7 +287,7 @@ const WishlistItemCard = ({
               src={imageURL}
               width={220}
               height={275}
-              layout="responsive"
+              alt='image'
             />
           </BetterLink>
           <div className="info">
