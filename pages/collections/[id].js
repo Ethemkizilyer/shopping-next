@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import styled, { keyframes } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
@@ -289,7 +289,7 @@ const ModalDiv = styled.div`
   }
 `;
 
-const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
+const ItemDetails = ( {item} ) => {
   const [size, setSize] = useState('');
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [promptSize, setPromptSize] = useState(false);
@@ -298,7 +298,7 @@ const ItemDetails = ({ id, imageURL, brand, category, name, amount }) => {
   const wishlistItems = useSelector((state) => state.wishlist.items);
   const cartItems = useSelector((state) => state.cart.items);
   const router = useRouter();
-
+  const {id,imageURL,amount,brand,category,name}=item
   const isWishlisted = !!wishlistItems.find((value) => value.itemId === id);
 
   const cartItem = cartItems?.find(
